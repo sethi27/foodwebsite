@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Food Map - World Flavors</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.svg" alt="Logo"></a>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link home">Home</a>
+            <a href="dish-tale.html" class="nav-link">The Dish & Its Tale</a>
+            <a href="tips.html" class="nav-link">Tips & Tricks</a>
+            <a href="cook.html" class="nav-link">Cook It Up</a>
+            <a href="trivia.html" class="nav-link">Taste Test Trivia</a>
+            <a href="about.html" class="nav-link">About us</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="region-info">
+                <h2>Explore World Cuisines</h2>
+                <p>Click on any marker to discover unique dishes and culinary traditions from different regions around the world.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="/help">Help</a>
+            <a href="map.html">Map</a>
+            <a href="/policy">Policy</a>
+        </div>
+        <p class="contact-info">Contact us: asethi@gmail.com</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([20, 0], 2);
+
+        //  OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        //  custom icons
+        const curryIcon = L.icon({
+            iconUrl: '../images/curry.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32],
+            className: 'custom-icon'
+        });
+
+        const pizzaIcon = L.icon({
+            iconUrl: '../images/pizza.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32],
+            className: 'custom-icon'
+        });
+
+        //  cuisine markers
+        const cuisineMarkers = [
+            {
+                coords: [20.5937, 78.9629],
+                name: 'Butter Chicken',
+                desc: 'Discover the rich flavors of Indian cuisine, from aromatic curries to tandoori specialties.→',
+                icon: curryIcon,
+                link: 'dish-tale.html'
+            },
+            {
+                coords: [41.8719, 12.5674],
+                name: 'Pizza',
+                desc: 'Experience authentic Italian pasta, pizza, and regional specialties.',
+                icon: pizzaIcon
+            },
+            {
+                coords: [35.8617, 104.1954],
+                name: 'Chinese Cuisine',
+                desc: 'Explore the diverse regional cuisines of China, from Sichuan to Cantonese.'
+            },
+            {
+                coords: [36.2048, 138.2529],
+                name: 'Japanese Cuisine',
+                desc: 'Savor the delicate flavors of sushi, ramen, and traditional Japanese dishes.'
+            },
+            {
+                coords: [23.6345, -102.5528],
+                name: 'Mexican Cuisine',
+                desc: 'Taste the vibrant flavors of tacos, mole, and traditional Mexican dishes.'
+            }
+        ];
+
+        //  markers to the map with custom popup content
+        cuisineMarkers.forEach(marker => {
+            const popupContent = marker.link 
+                ? `
+                    <h3>${marker.name}</h3>
+                    <p><a href="${marker.link}" style="color: #FF4757; text-decoration: none;">${marker.desc}</a></p>
+                `
+                : `
+                    <h3>${marker.name}</h3>
+                    <p>${marker.desc}</p>
+                `;
+
+            L.marker(marker.coords, {
+                icon: marker.icon || L.Icon.Default.prototype
+            })
+                .bindPopup(popupContent)
+                .addTo(map);
+        });
+    </script>
+</body>
+</html> 

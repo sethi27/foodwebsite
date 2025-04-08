@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips & Tricks - World Flavors</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .tips-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dish-header {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #E5E971;
+        }
+
+        .dish-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #E5E971;
+        }
+
+        .dish-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+            text-align: center;
+        }
+
+        .country {
+            color: #666;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .recipe-jump {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .recipe-jump a {
+            color: #09386A;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .recipe-note {
+            font-style: italic;
+            color: #09386A;
+            margin: 1rem 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .tips-section {
+            margin-top: 3rem;
+        }
+
+        .tips-section h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .tip-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .tip-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 2px dashed #E5E971;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #09386A;
+        }
+
+        .tip-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .tip-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .tip-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .tips-container {
+                padding: 1rem;
+            }
+
+            .dish-image-placeholder {
+                height: 150px;
+            }
+
+            .tip-item {
+                gap: 1rem;
+            }
+
+            .tip-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .dish-header,
+            .dish-name,
+            .country,
+            .recipe-jump,
+            .recipe-note,
+            .tips-section h2 {
+                text-align: center;
+            }
+
+            .tip-content,
+            .tip-title,
+            .tip-text {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.svg" alt="Logo"></a>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link home">Home</a>
+            <a href="dish-tale.html" class="nav-link">The Dish & Its Tale</a>
+            <a href="tips.html" class="nav-link active">Tips & Tricks</a>
+            <a href="cook.html" class="nav-link">Cook It Up</a>
+            <a href="trivia.html" class="nav-link">Taste Test Trivia</a>
+            <a href="about.html" class="nav-link">About us</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="tips-container">
+            <!-- Dish Header Section -->
+            <div class="dish-header">
+                <div class="dish-image-placeholder">
+                    Image Placeholder
+                </div>
+                <h1 class="dish-name">Dish name</h1>
+                <p class="country">Country</p>
+            </div>
+
+            <!-- Jump to Recipe Link -->
+            <div class="recipe-jump">
+                <a href="cook.html#recipe">Jump to the recipe →</a>
+            </div>
+
+            <!-- Recipe Note -->
+            <p class="recipe-note">
+                We strongly advise you to read the cooking tips before jumping to the recipe though
+            </p>
+
+            <!-- Tips & Recommendations Section -->
+            <div class="tips-section">
+                <h2>Tips & Recommendations</h2>
+
+                <!-- Tip Item 1 -->
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        Image
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title">Title</h3>
+                        <p class="tip-text">Mix the flour and the water until combined, then knead until you have a smooth dough. Cover with cling film and let the dough rest for 30 minutes. Shape the dough into a long roll, then divide into 8 equal pieces.</p>
+                    </div>
+                </div>
+
+                <!-- Tip Item 2 -->
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        Image
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title">Title</h3>
+                        <p class="tip-text">Mix the flour and the water until combined, then knead until you have a smooth dough. Cover with cling film and let the dough rest for 30 minutes. Shape the dough into a long roll, then divide into 8 equal pieces.</p>
+                    </div>
+                </div>
+
+                <!-- Tip Item 3 -->
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        Image
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title">Title</h3>
+                        <p class="tip-text">Mix the flour and the water until combined, then knead until you have a smooth dough. Cover with cling film and let the dough rest for 30 minutes. Shape the dough into a long roll, then divide into 8 equal pieces.</p>
+                    </div>
+                </div>
+
+                <!-- Tip Item 4 -->
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        Image
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title">Title</h3>
+                        <p class="tip-text">Mix the flour and the water until combined, then knead until you have a smooth dough. Cover with cling film and let the dough rest for 30 minutes. Shape the dough into a long roll, then divide into 8 equal pieces.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="/help">Help</a>
+            <a href="map.html">Map</a>
+            <a href="/policy">Policy</a>
+        </div>
+        <p class="contact-info">Contact us:asethi@gmail.com</p>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Flavors</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ... existing styles ... */
+
+        .cta-section {
+            margin-top: 4rem;
+            position: relative;
+            padding: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;  /* Ensure full width */
+        }
+
+        .cta-background {
+            position: absolute;
+            bottom: 0;
+            left: 0;  /* Full width alignment */
+            right: 0;  /* Full width alignment */
+            width: 100%;  /* Full width */
+            height: 300px;  /* Increased height */
+            background: #f5f5f5;
+            border: 2px dashed #ddd;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            z-index: -1;
+        }
+
+        .journey-text {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .begins-text {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #ff4757;
+            position: relative;
+            z-index: 1;
+        }
+
+        .explore-btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 2rem;  /* Add space at bottom */
+        }
+
+        @media (max-width: 768px) {
+            .cta-background {
+                height: 250px;  /* Slightly smaller height on tablets */
+            }
+            
+            .cta-section {
+                padding: 2rem 0;  /* Adjusted padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-background {
+                height: 200px;  /* Adjusted height for mobile */
+                opacity: 0.5;
+            }
+            
+            .cta-section {
+                padding: 1.5rem 0;  /* Adjusted padding */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Logo">
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link home active">Home</a>
+            <a href="pages/dish-tale.html" class="nav-link">The Dish & Its Tale</a>
+            <a href="pages/tips.html" class="nav-link">Tips & Tricks</a>
+            <a href="pages/cook.html" class="nav-link">Cook It Up</a>
+            <a href="pages/trivia.html" class="nav-link">Taste Test Trivia</a>
+            <a href="pages/about.html" class="nav-link">About us</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="title animate-fade-in">
+            Explore World Flavors Through Taste,
+            No Passport,No Flight, Just Stories.
+        </h1>
+
+        <div class="description-container">
+            <p class="description">
+                Food is more than just a meal—it's a story, a journey through cultures, traditions, and generations. World Flavors brings you the essence of global cuisine, allowing you to discover, learn, and experience flavors from around the world, all from the comfort of your home. No need for a passport or plane ticket—just an open heart and a curious palate.Each dish has a history, a unique tale woven into its ingredients and preparation. From time-honored recipes passed down through families to modern twists on traditional flavors, our platform is your gateway to exploring the world through taste.            </p>
+            <a href="pages/about.html" class="read-more-btn">Read more</a>
+        </div>
+
+        <div class="cta-section animate-fade-in">
+            <div class="cta-background">
+                Image
+            </div>
+            <p class="journey-text">Click, explore : Your Journey</p>
+            <p class="begins-text">Begins Here.</p>
+            <a href="pages/map.html" class="explore-btn">Explore</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="pages/about.html">About us</a>
+            <a href="/help">Help</a>
+            <a href="pages/map.html" class="map">Map</a>
+            <a href="/policy">Policy</a>
+        </div>
+        <p class="contact-info">Contact us:asethi@gmail.com</p>
+    </footer>
+</body>
+</html> 

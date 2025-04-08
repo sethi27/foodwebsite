@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cook It Up - World Flavors</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .ingredients-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .key-ingredient {
+            margin-bottom: 4rem;
+        }
+
+        .key-ingredient h2 {
+            color: #FF4757;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .key-ingredient-diagram {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .diagram-container {
+            border: 2px solid #E5E971;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .ingredient-image {
+            width: 200px;
+            height: 200px;
+            background: #f5f5f5;
+            margin: 0 auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ingredient-text {
+            color: #666;
+          
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .ingredient-description {
+            margin: 2rem auto;
+            max-width: 800px;
+
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+        .other-ingredients {
+            margin-top: 4rem;
+        }
+
+        .other-ingredients h2 {
+            color: #FF4757;
+            font-size: 2.5rem;
+           
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ingredient-card {
+            border: 2px solid;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .ingredient-card:nth-child(1) { border-color: #09386A; }
+        .ingredient-card:nth-child(2) { border-color: #FF4757; }
+        .ingredient-card:nth-child(3) { border-color: #09386A; }
+        .ingredient-card:nth-child(4) { border-color: #FF4757; }
+
+        .ingredient-card p {
+           
+            color: #333;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Recipe Section Styles */
+        .recipe-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .recipe-section h2 {
+            color: #FF4757;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+          
+        }
+
+        .prep-times {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .time-item {
+            color: #09386A;
+           
+            font-size: 1rem;
+        }
+
+        .recipe-columns {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .recipe-column {
+            padding: 2rem;
+            border: 2px solid #E5E971;
+            border-radius: 15px;
+            background: white;
+        }
+
+        /* Make ingredients column narrower */
+        .recipe-column.ingredients {
+            flex: 0 0 300px; /* Fixed width of 300px */
+            text-align: left;
+        }
+
+        /* Make preparations column take remaining space */
+        .recipe-column.preparations {
+            flex: 1;
+        }
+
+        /* Ensure all text in ingredients is left-aligned */
+        .recipe-column.ingredients h3,
+        .recipe-column.ingredients .servings,
+        .ingredient-category h4,
+        .ingredient-category ul,
+        .ingredient-category li {
+            text-align: left;
+        }
+
+        .ingredient-category li {
+            padding-left: 0;
+        }
+
+        /* Ingredients Column */
+        .recipe-column.ingredients h3 {
+            color: #FF4757;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            
+        }
+
+        .servings {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .ingredient-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .ingredient-category h4 {
+            color: #FF4757;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .ingredient-category.filling h4 {
+            color: #FF4757;
+        }
+
+        .ingredient-category.base h4 {
+            color: #333;
+        }
+
+        .ingredient-category.sauce h4 {
+            color: #FF7F50;
+        }
+
+        .ingredient-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredient-category li {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            list-style-type: none;
+        }
+
+        /* Preparations Column */
+        .recipe-column.preparations h3 {
+            color: #FF4757;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+        }
+
+        .step h4 {
+            color: #FF4757;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Adjust padding for mobile */
+            .ingredients-section,
+            .recipe-section {
+                padding: 1rem;
+            }
+
+            /* Make ingredient cards 2x2 grid */
+            .ingredients-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            /* Adjust recipe columns for mobile */
+            .recipe-columns {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .recipe-column.ingredients {
+                width: 100%;
+                flex: none;
+            }
+
+            /* Adjust prep times for mobile */
+            .prep-times {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                text-align: center;
+            }
+
+            /* Adjust video placeholder height for mobile */
+            .video-placeholder {
+                height: 250px;
+            }
+
+            /* Adjust heading sizes for mobile */
+            .recipe-section h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .recipe-column h3 {
+                font-size: 1.1rem;
+            }
+
+            /* Adjust ingredient category spacing */
+            .ingredient-category {
+                margin-bottom: 1rem;
+            }
+
+            .ingredient-category h4 {
+                font-size: 0.95rem;
+            }
+
+            .ingredient-category li {
+                font-size: 0.9rem;
+            }
+
+            /* Adjust step spacing */
+            .step {
+                margin-bottom: 1rem;
+            }
+
+            .step h4 {
+                font-size: 0.95rem;
+            }
+
+            .step p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Additional breakpoint for very small screens */
+        @media (max-width: 480px) {
+            .ingredients-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .ingredient-card {
+                padding: 1rem;
+            }
+
+            .prep-times {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Video Section Styles */
+        .recipe-video {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 500px;
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+            border: 2px solid #E5E971;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 71, 87, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .video-placeholder p {
+            color: #666;
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design for Video */
+        @media (max-width: 768px) {
+            .video-placeholder {
+                height: 300px;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.svg" alt="Logo"></a>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link home">Home</a>
+            <a href="dish-tale.html" class="nav-link">The Dish & Its Tale</a>
+            <a href="tips.html" class="nav-link">Tips & Tricks</a>
+            <a href="cook.html" class="nav-link active">Cook It Up</a>
+            <a href="trivia.html" class="nav-link">Taste Test Trivia</a>
+            <a href="about.html" class="nav-link">About us</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="ingredients-section">
+            <!-- Key Ingredient Section -->
+            <div class="key-ingredient">
+                <h2>Key Ingredient</h2>
+                <div class="key-ingredient-diagram">
+                    <div class="diagram-container">
+                        <div class="ingredient-image">
+                            <img src="../images/placeholder.png" alt="Key Ingredient">
+                        </div>
+                        <p class="ingredient-text">Ingredient</p>
+                    </div>
+                </div>
+                <div class="ingredient-description">
+                    Having established a successful industry in Assam's Brahmaputra valley, the feasibility of growing tea in the entire range of foot hills of the Himalayas and other parts of India was explored. By 1863, 78 plantations were established in Kumaon, Dehra Dun, Garhwal, Kangra Valley and Kulu. After the transfer of the present Darjeeling district to the East India Company.
+                </div>
+            </div>
+
+            <!-- Other Ingredients Section -->
+            <div class="other-ingredients">
+                <h2>Other ingredients</h2>
+                <div class="ingredients-grid">
+                    <div class="ingredient-card">
+                        <img src="../images/placeholder.png" alt="Ingredient 1">
+                        <p>Lorem ipsum dolor sit amet consectetur. Elementum risus</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <img src="../images/placeholder.png" alt="Ingredient 2">
+                        <p>Lorem ipsum dolor sit amet consectetur. Elementum risus</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <img src="../images/placeholder.png" alt="Ingredient 3">
+                        <p>Lorem ipsum dolor sit amet consectetur. Elementum risus</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <img src="../images/placeholder.png" alt="Ingredient 4">
+                        <p>Lorem ipsum dolor sit amet consectetur. Elementum risus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe Section -->
+        <div class="recipe-section" id="recipe">
+            <h2>Recipe</h2>
+            <div class="prep-times">
+                <div class="time-item">Prep: 1h</div>
+                <div class="time-item">Cook: 5min</div>
+                <div class="time-item">Proofing Time: 1h</div>
+                <div class="time-item">Ready In: 5h 5min</div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="recipe-video">
+                <div class="video-placeholder">
+                    <div class="play-button">▶</div>
+                    <p>Recipe Video</p>
+                </div>
+            </div>
+            
+            <div class="recipe-columns">
+                <!-- Left Column - Ingredients -->
+                <div class="recipe-column ingredients">
+                    <h3>INGREDIENTS</h3>
+                    <p class="servings">8 Servings</p>
+
+                    <div class="ingredient-category filling">
+                        <h4>Filling</h4>
+                        <ul>
+                            <li>2 cups of marshmallow</li>
+                            <li>1 tsp salt</li>
+                            <li>2 tsp rice flour</li>
+                            <li>1 cup ice water</li>
+                            <li>1 tsp high heat oil</li>
+                            <li>1 tsp ginger</li>
+                            <li>2 tbsp brown sugar</li>
+                            <li>2 tbsp sesame oil</li>
+                        </ul>
+                    </div>
+
+                    <div class="ingredient-category base">
+                        <h4>Base</h4>
+                        <ul>
+                            <li>2/3 cup of supreme flour</li>
+                            <li>1 tbsp milk water</li>
+                        </ul>
+                    </div>
+
+                    <div class="ingredient-category sauce">
+                        <h4>Sauce</h4>
+                        <ul>
+                            <li>2 packets soy-chili vinegar</li>
+                            <li>1 cup green onion</li>
+                            <li>1 cup ginger</li>
+                            <li>1 cup cooking wine</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column - Preparations -->
+                <div class="recipe-column preparations">
+                    <h3>PREPARATIONS</h3>
+                    
+                    <div class="step">
+                        <h4>Step 1/5</h4>
+                        <p>Mix the flour and water until combined, then knead until you get a smooth dough. Shape the dough into a ball and let it rest for 30 minutes. Shape the dough into a long roll, then divide it into 8 equal pieces.</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>Step 2/5</h4>
+                        <p>Once ready to roll, first cut all the ingredients you want to pack into a filling. Add all the ingredients for the pork belly into a large bowl and mix well. Add all the seasonings for the pork belly into a large bowl and mix until everything is combined.</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>Step 3/5</h4>
+                        <p>Once ready with the pork belly, add into cup of the filling mixture to make filling. Mix everything well until the mixture is smooth and well combined.</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>Step 4/5</h4>
+                        <p>To quickly mix the dumpling, first, place the wrapper on your palm and add 1/2 cup of the filling in the center of the wrapper. Next fold the sides of the wrapper over the filling and pinch to seal with your right hand seal with your fingers.</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>Step 5/5</h4>
+                        <p>Place the dumplings on a parchment paper-lined basket, place a over at half-way water, cover with a lid and steam for 8-10 minutes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="/help">Help</a>
+            <a href="map.html" class="footer-links">Map</a>
+            <a href="/policy">Policy</a>
+        </div>
+        <p class="contact-info">Contact us:asethi@gmail.com</p>
+    </footer>
+</body>
+</html> 
